@@ -193,6 +193,7 @@ function LifeFlow() {
     setLoginStreak(savedStreak);
   }, []);
 
+
   const userId = localStorage.getItem('lifeflow_user_id') || localStorage.getItem('user_id');
 
   useEffect(() => {
@@ -200,19 +201,19 @@ function LifeFlow() {
     
     const synchronizeCloudStorage = async () => {
       try {
-        const taskRes = await fetch(`http://127.0.0.1:8000/tasks/${userId}`);
+        const taskRes = await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${userId}`);
         if (taskRes.ok) {
           const data = await taskRes.json();
           setTasks(data.tasks || []);
         }
   
-        const habitRes = await fetch(`http://127.0.0.1:8000/habits/${userId}`);
+        const habitRes = await fetch(`https://lifeflow-backend-1.onrender.com/${userId}`);
         if (habitRes.ok) {
           const data = await habitRes.json();
           setHabits(data.habits || []);
         }
   
-        const goalRes = await fetch(`http://127.0.0.1:8000/goals/${userId}`);
+        const goalRes = await fetch(`https://lifeflow-backend-1.onrender.com/${userId}`);
         if (goalRes.ok) {
           const data = await goalRes.json();
           setGoals(data.goals || []);
@@ -501,7 +502,7 @@ function LifeFlow() {
     }
   };
 
-  const handleHabitToggle = async (habitId, targetDate = getTodayStr()) => {
+  const handleHabitToggle = async (habitId, targetDate) => {
     try {
       const response = await fetch(`http://127.0.0.1:8000/habits/${habitId}/toggle?date=${targetDate}`, {
         method: 'POST'

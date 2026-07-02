@@ -108,7 +108,7 @@ export default function CalendarGridView({ theme, tasks, setTasks, triggerToast 
           category: fallbackCategory
         };
   
-        const res = await fetch(`http://127.0.0.1:8000/tasks/${currentUid}`, {
+        const res = await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${currentUid}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(taskPayload)
@@ -142,7 +142,7 @@ export default function CalendarGridView({ theme, tasks, setTasks, triggerToast 
     const targetPayload = { title: goalName.trim(), category: goalCat, targetDate: goalDate };
   
     try {
-      const res = await fetch(`http://127.0.0.1:8000/goals/${currentUid}`, {
+      const res = await fetch(`https://lifeflow-backend-1.onrender.com/goals/${currentUid}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(targetPayload)

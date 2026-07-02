@@ -30,7 +30,7 @@ export default function LifeOSAreasView({ tasks, setTasks, habits, setHabits, ha
           targetTime: currentInput.time
         };
   
-        const habitResponse = await fetch(`http://127.0.0.1:8000/habits/${currentUserId}`, {
+        const habitResponse = await fetch(`https://lifeflow-backend-1.onrender.com/habits/${currentUserId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(habitPayload)
@@ -56,7 +56,7 @@ export default function LifeOSAreasView({ tasks, setTasks, habits, setHabits, ha
         category: category
       };
   
-      const taskResponse = await fetch(`http://127.0.0.1:8000/tasks/${currentUserId}`, {
+      const taskResponse = await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${currentUserId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taskPayload)
@@ -119,7 +119,7 @@ export default function LifeOSAreasView({ tasks, setTasks, habits, setHabits, ha
     try {
       if (config.isRoutine) {
         const habitPayload = { name: config.text, category: category, targetTime: config.time };
-        const habitRes = await fetch(`http://127.0.0.1:8000/habits/${currentUserId}`, {
+        const habitRes = await fetch(`https://lifeflow-backend-1.onrender.com/${currentUserId}`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(habitPayload)
         });
         if (habitRes.ok) {
@@ -129,7 +129,7 @@ export default function LifeOSAreasView({ tasks, setTasks, habits, setHabits, ha
       }
 
       const taskPayload = { title: config.text, date: todayStr, time: config.time, priority: config.priority, category: category };
-      const taskRes = await fetch(`http://127.0.0.1:8000/tasks/${currentUserId}`, {
+      const taskRes = await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${currentUserId}`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(taskPayload)
       });
       if (taskRes.ok) {

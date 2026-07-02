@@ -20,7 +20,7 @@ export function GoalsRoadmapView({ theme, goals, setGoals, triggerToast }) {
     const payload = { title: goalName, category: goalCat, targetDate: goalDate };
   
     try {
-      const response = await fetch(`http://127.0.0.1:8000/goals/${currentUserId}`, {
+      const response = await fetch(`https://lifeflow-backend-1.onrender.com/goals/${currentUserId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -53,7 +53,7 @@ export function GoalsRoadmapView({ theme, goals, setGoals, triggerToast }) {
     const payload = { text: input.text, date: input.date };
   
     try {
-      const response = await fetch(`http://127.0.0.1:8000/goals/${goalId}/milestones`, {
+      const response = await fetch(`https://lifeflow-backend-1.onrender.com/goals/${goalId}/milestones`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
