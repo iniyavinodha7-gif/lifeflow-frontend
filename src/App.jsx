@@ -481,7 +481,7 @@ function LifeFlow() {
     }));
 
     try {
-      await fetch(`http://127.0.0.1:8000/tasks/${id}`, {
+      await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: nextState })
@@ -496,7 +496,7 @@ function LifeFlow() {
     triggerToast("Task Deleted", "Removed item permanently from dashboard pipeline.");
 
     try {
-      await fetch(`http://127.0.0.1:8000/tasks/${id}`, { method: 'DELETE' });
+      await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${id}`, { method: 'DELETE' });
     } catch (error) {
       console.error("Failed to delete task", error);
     }
@@ -504,7 +504,7 @@ function LifeFlow() {
 
   const handleHabitToggle = async (habitId, targetDate) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/habits/${habitId}/toggle?date=${targetDate}`, {
+      const response = await fetch(`https://lifeflow-backend-1.onrender.com/habits/${habitId}/toggle?date=${targetDate}`, {
         method: 'POST'
       });
       const data = await response.json();
@@ -1118,7 +1118,7 @@ function TasksHubView({ theme, tasks, setTasks, toggleTask, triggerToast, remove
     };
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/tasks/${userId}`, {
+      const response = await fetch(`https://lifeflow-backend-1.onrender.com/tasks/${userId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newTaskPayload)
